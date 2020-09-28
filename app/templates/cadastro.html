@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %} Cadastro {% endblock %}
+
+{% block content%}
+<div class="conteiner-sm">
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h1 class="display-4 text-primary"><i class="fas fa-users"></i> Cadastro de Clientes</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-sm-12 col-md-10 col-lg-8">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <label for="inputNome">Seu nome</label>
+                        <input type="text" name="inputNome" class="form-control" id="inputNome" placeholder="Nome ..">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="inputCidade">Sua Cidade</label>
+                        <input type="text" name="inputCidade" class="form-control" id="inputCidade"
+                            placeholder="Cidade ..">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="inputCep">Seu CEP</label>
+                        <input type="text" class="form-control" name="inputCep" id="inputCep" placeholder="CEP ..">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="inputNumero">Número</label>
+                        <input type="number" min="0" name="inputNumero" class="form-control" id="inputNumero"
+                            placeholder="Número ..">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="inputBairro">Seu Bairro</label>
+                        <input type="text" name="inputBairro" class="form-control" id="inputBairro"
+                            placeholder="Bairro ..">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="inputRua">Sua rua</label>
+                        <input type="text" name="inputRua" class="form-control" id="inputRua" placeholder="Rua ..">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="inputEmail">Seu e-mail</label>
+                        <input type="email" name="inputEmail" class="form-control" id="inputEmail"
+                            placeholder="E-mail ..">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="inputTelefone">Seu Telefone</label>
+                        <input type="text" name="inputTelefone" class="form-control" id="inputTelefone"
+                            placeholder="Telefone ..">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="inputLogin">Seu Login</label>
+                        <input type="text" name="inputLogin" class="form-control" id="inputLogin"
+                            placeholder="Login ..">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="inputSenha">Senha</label>
+                        <input type="password" name="inputSenha" class="form-control" id="inputSenha"
+                            placeholder="Senha ..">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="inputConfirmSenha">Confirme a Senha</label>
+                        <input type="password" name="inputConfirmSenha" class="form-control" id="inputConfirmSenha"
+                            placeholder="Confirme a senha ..">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input"> Desejo receber novidades por e-mail
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Jose Edmar de Siqueira">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome-free/css/fontawesome.css')}}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome-free/css/brands.css')}}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome-free/css/solid.css')}}">
+
+    <title>{% block title %} Lancheria {% endblock %}</title>
+    <link rel="" href="">
+</head>
+
+<body>
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary">
+
+        <div class="container-lg">
+
+            <a class="navbar-brand" href="/">HOME</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSite">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastro</a>
+                    </li>
+                    <li class="nav-item">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                                    id="navDrop">Cardápio</a>
+                                <div class="dropdown-menu bg-gradient-primary">
+                                    <a href="#" class="dropdown-item">Lanches</a>
+                                    <a href="#" class="dropdown-item">Porções</a>
+                                    <a href="#" class="dropdown-item">Bebidas</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- <a class="nav-link" href="#">Cardápio</a> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Carrinho</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sobre">Sobre</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                            id="navDrop">Administração</a>
+                        <div class="dropdown-menu bg-gradient-primary">
+                            <a href="#" class="dropdown-item">Cadastro Cliente</a>
+                            <a href="#" class="dropdown-item">Cadastro User</a>
+                            <a href="#" class="dropdown-item">Cadastro Lanche</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline">
+                    <button class="btn btn-dark ml-4 mr-2" type="submit">Login</button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <!-- footer fixed-bottom -->
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <hr>
+            </div>
+            <div class="col-sm-3 my-3">
+                <h3>Carnes</h3>
+                <p class="text-justify">
+                    Trabalhamos com o melhor das carnes preparando um blend que vai dar muito sabor ao Hamburguer.
+                </p>
+            </div>
+            <div class="col-sm-3 my-3">
+                <h3>Entrega</h3>
+                <p class="text-justify">
+                    Nossa entraga é realizada de foma rápida, para que você possa desfrutar o melhor do lanche ainda
+                    quente, mas sempre com segurança para nossos motoboy.
+                </p>
+            </div>
+            <div class="col-sm-3 my-3">
+                <h3>Redes Socias</h3>
+                <div class="btn-group-vertical btn-block btn-group-lg" role="group">
+                    <a href="https://www.facebook.com/lancheriagourmetsaocarlos/" target="_brank"
+                        class="btn btn-outline-primary"><i class="fab fa-facebook-square"></i> Facebook</a>
+                    <a href="https://www.instagram.com/lancheriagourmetsaocarlos/" target="_brank"
+                        class="btn btn-outline-info"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://wa.me/message/26XQH6QANRVVP1" target="_brank" class="btn btn-outline-success"><i
+                            class="fab fa-whatsapp"></i> Faça seu pedido</a>
+                </div>
+            </div>
+            <div class="col-sm-3 my-3">
+                <h3>Menu</h3>
+                <div class="list-group text-center">
+                    <a href="/" class="list-group-item list-group-item-action list-group-item-primary">HOME</a>
+                    <a href="/cadastro" class="list-group-item list-group-item-action list-group-item-primary">Cadastro</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Cardápio</a>
+                    <a href="/sobre" class="list-group-item list-group-item-action list-group-item-primary">Sobre</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-5">
+            <blockquote class="blockquote text-center">
+                <p class="mb-0">O sucesso não é garantido, mas o fracasso é certo se vocẽ não estiver emocionamente
+                    envolvido em seu trabaho.</p>
+                <footer class="blockquote-footer">Biz Stone <cite title="Titulo"> Fundador do Twitter</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+
+
+    <!--Script-->
+    <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='node_modules/popper.js/dist/umd/popper.js')}}"></script>
+    <script src="../static/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- <script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.js')}}"></script> -->
+</body>
+
+</html>

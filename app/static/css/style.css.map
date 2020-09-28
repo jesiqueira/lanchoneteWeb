@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,iDAAiD;EAC7C,KAAK,EAAC,KAAK;;AAEf,uDAAuD;EACnD,KAAK,EAAC,SAAS",
+"sources": ["../node_modules/bootstrap/scss/style.scss"],
+"names": [],
+"file": "style.css"
+}

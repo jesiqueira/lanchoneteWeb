@@ -1,0 +1,9 @@
+__pycache__
+.idea
+.vscode
+migrations
+venv
+.sass-cache
+img
+node_modules
+config.py

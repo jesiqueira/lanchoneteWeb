@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ super() }} - Index {% endblock %}
+
+{% block content %}
+
+<div id="corouselSite" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#corouselSite" data-slide-to="0" class="active"></li>
+        <li data-target="#corouselSite" data-slide-to="1"></li>
+        <li data-target="#corouselSite" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{url_for('static', filename='img/salad.png')}}" class="img-fluid d-block" alt="...">
+            <div class="carousel-caption d-none d-md-block text-dark">
+                <h3>Contrary to popular </h3>
+                <p class="lead">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{url_for('static', filename='img/salad.png')}}" class="img-fluid d-block" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Contrary to popular </h3>
+                <p class="lead">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{url_for('static', filename='img/salad.png')}}" class="img-fluid d-block" alt="...">
+            <div class="carousel-caption d-none d-md-block text-dark">
+                <h3>Contrary to popular </h3>
+                <p class="lead">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia </p>
+            </div>
+        </div>
+    </div>
+    <a href="#corouselSite" class="carousel-control-prev" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon "></span>
+        <span class="sr-only"> Anterior</span>
+    </a>
+    <a href="#corouselSite" class="carousel-control-next" role="button" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="sr-only"> Avançar</span>
+    </a>
+</div>
+
+<div class="container-sm">
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h1 class="display-3">Novidades e Promoções</h1>
+            <p>Prove e descubra o saber impressinante do nosso Hamburguer</p>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='img/cad_index_400x300.png')}}" alt="salad" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Salad</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Ingrediente</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue odio,
+                        mattis sed rutrum vitae,vitae efficitur risus.</p>
+                    <a href="#" class="card-link">Pedir</a>
+                    <a href="#" class="card-link">Cardápio</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='img/cad_index_400x300.png')}}" alt="salad" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Salad</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Ingrediente</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, tempor sed orci. Nulla facilisi. Etiam efficitur
+                        volutpat tellus, vitae efficitur risus.</p>
+                    <a href="#" class="card-link">Pedir</a>
+                    <a href="#" class="card-link">Cardápio</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='img/cad_index_400x300.png')}}" alt="salad" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Salad</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Ingrediente</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, tempor sed orci. Nulla facilisi. Etiam efficitur
+                        volutpat tellus, vitae efficitur risus.</p>
+                    <a href="#" class="card-link">Pedir</a>
+                    <a href="#" class="card-link">Cardápio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='img/cad_index_400x300.png')}}" alt="salad" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Salad</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Ingrediente</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue odio,
+                        mattis sed rutrum vitae,vitae efficitur risus.</p>
+                    <a href="#" class="card-link">Pedir</a>
+                    <a href="#" class="card-link">Cardápio</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='img/cad_index_400x300.png')}}" alt="salad" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Salad</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Ingrediente</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, tempor sed orci. Nulla facilisi. Etiam efficitur
+                        volutpat tellus, vitae efficitur risus.</p>
+                    <a href="#" class="card-link">Pedir</a>
+                    <a href="#" class="card-link">Cardápio</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{url_for('static', filename='img/cad_index_400x300.png')}}" alt="salad" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Salad</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Ingrediente</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, tempor sed orci. Nulla facilisi. Etiam efficitur
+                        volutpat tellus, vitae efficitur risus.</p>
+                    <a href="#" class="card-link">Pedir</a>
+                    <a href="#" class="card-link">Cardápio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
