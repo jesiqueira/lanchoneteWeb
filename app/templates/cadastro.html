@@ -11,74 +11,88 @@
     </div>
     <div class="row justify-content-center mb-5">
         <div class="col-sm-12 col-md-10 col-lg-8">
-            <form>
+            <!-- <title>My Application</title>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %} -->
+            <form action="/salvar_cliente" method="POST" name="frm_salvar_cliente">
+                {{ form.csrf_token }}
                 <div class="form-row">
                     <div class="form-group col-sm-12">
-                        <label for="inputNome">Seu nome</label>
-                        <input type="text" name="inputNome" class="form-control" id="inputNome" placeholder="Nome ..">
+                        {{ form.nome.label}}
+                        {{ form.nome(class="form-control", placeholder='Nome..') }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        <label for="inputCidade">Sua Cidade</label>
-                        <input type="text" name="inputCidade" class="form-control" id="inputCidade"
-                            placeholder="Cidade ..">
+                        {{ form.cidade.label }}
+                        {{ form.cidade(class="form-control", placeholder="Cidade ..") }}
                     </div>
                     <div class="form-group col-sm-3">
-                        <label for="inputCep">Seu CEP</label>
-                        <input type="text" class="form-control" name="inputCep" id="inputCep" placeholder="CEP ..">
+                        {{ form.cep.label}}
+                        {{ form.cep(class="form-control", placeholder="CEP ..")}}
                     </div>
                     <div class="form-group col-sm-3">
-                        <label for="inputNumero">Número</label>
-                        <input type="number" min="0" name="inputNumero" class="form-control" id="inputNumero"
-                            placeholder="Número ..">
+                        {{ form.numero.label }}
+                        {{ form.numero(class="form-control", placeholder="Número ..") }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        <label for="inputBairro">Seu Bairro</label>
-                        <input type="text" name="inputBairro" class="form-control" id="inputBairro"
-                            placeholder="Bairro ..">
+                        {{form.bairro.label}}
+                        {{form.bairro(class="form-control", placeholder="Bairro ..")}}
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="inputRua">Sua rua</label>
-                        <input type="text" name="inputRua" class="form-control" id="inputRua" placeholder="Rua ..">
+                        {{form.rua.label}}
+                        {{form.rua(class="form-control", placeholder="Rua ..")}}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        <label for="inputEmail">Seu e-mail</label>
-                        <input type="email" name="inputEmail" class="form-control" id="inputEmail"
-                            placeholder="E-mail ..">
+                        {{form.email.label}}
+                        {{form.email(class="form-control", placeholder="E-mail ..")}}
                     </div>
                     <div class="form-group col-sm-3">
-                        <label for="inputTelefone">Seu Telefone</label>
-                        <input type="text" name="inputTelefone" class="form-control" id="inputTelefone"
-                            placeholder="Telefone ..">
+                        {{form.telefone.label}}
+                        {{form.telefone(class="form-control", placeholder="Telefone ..")}}
                     </div>
                     <div class="form-group col-sm-3">
-                        <label for="inputLogin">Seu Login</label>
-                        <input type="text" name="inputLogin" class="form-control" id="inputLogin"
-                            placeholder="Login ..">
+                        {{ form.login.label}}
+                        {{form.login(class="form-control", placeholder="Login ..")}}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        <label for="inputSenha">Senha</label>
-                        <input type="password" name="inputSenha" class="form-control" id="inputSenha"
-                            placeholder="Senha ..">
+                        {{form.password.label}}
+                        {{form.password(class="form-control", placeholder="Senha ..")}}
+                        <!-- {{error}} -->
+                        {% if error == 'senha' %}
+                            <div div class="alert alert-danger" role="alert">
+                                Senhas não são Iguais
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="inputConfirmSenha">Confirme a Senha</label>
-                        <input type="password" name="inputConfirmSenha" class="form-control" id="inputConfirmSenha"
-                            placeholder="Confirme a senha ..">
+                        {{form.confirmPassword.label}}
+                        {{form.confirmPassword(class="form-control", placeholder="Confirme a senha ..")}}
+                        {% if error == 'senha' %}
+                            <div div class="alert alert-danger" role="alert">
+                                Senhas não são Iguais
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-12">
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input"> Desejo receber novidades por e-mail
+                                {{form.receberEmail(class="form-check-input")}} Desejo receber novidades por e-mail
                             </label>
                         </div>
                     </div>

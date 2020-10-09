@@ -5,10 +5,25 @@ class Login(db.Model):
     __tablename__ = 'login'
 
     id = db.Column(db.Integer, primary_key=True)
-    login = db.Column(db.String(10), unique=True, nullable=False)
-    password = db.Column(db.String, unique=True, nullable=False)
+    login = db.Column(db.String(20), unique=True, nullable=False)
+    password = db.Column(db.String(250), unique=True, nullable=False)
     is_admin = db.Column(db.Boolean, default=0)
     is_ativo = db.Column(db.Boolean, default=0)
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
 
     def __init__(self, login, password, is_admin, is_ativo):
         self.login = login
@@ -17,13 +32,15 @@ class Login(db.Model):
         self.is_ativo = is_ativo
 
     def __repr__(self):
-        return '<Login %r>' % self.login
+        return '<Admin %r>' % self.login
 
 
 friosLanche = db.Table(
     'friosLanche',
-    db.Column('frios_id', db.Integer, db.ForeignKey('frios.id'), primary_key=True),
-    db.Column('lanche_id', db.Integer, db.ForeignKey('lanche.id'), primary_key=True)
+    db.Column('frios_id', db.Integer, db.ForeignKey(
+        'frios.id'), primary_key=True),
+    db.Column('lanche_id', db.Integer, db.ForeignKey(
+        'lanche.id'), primary_key=True)
 )
 
 
@@ -49,8 +66,10 @@ class Frios(db.Model):
 
 saladaLanche = db.Table(
     'saladaLanche',
-    db.Column('salada_id', db.Integer, db.ForeignKey('salada.id'), primary_key=True),
-    db.Column('lanche_id', db.Integer, db.ForeignKey('lanche.id'), primary_key=True)
+    db.Column('salada_id', db.Integer, db.ForeignKey(
+        'salada.id'), primary_key=True),
+    db.Column('lanche_id', db.Integer, db.ForeignKey(
+        'lanche.id'), primary_key=True)
 )
 
 
@@ -138,8 +157,10 @@ class Promocao(db.Model):
 
 pedidoLanche = db.Table(
     'pedidoLanche',
-    db.Column('pedido_id', db.Integer, db.ForeignKey('pedido.id'), primary_key=True),
-    db.Column('lanche_id', db.Integer, db.ForeignKey('lanche.id'), primary_key=True)
+    db.Column('pedido_id', db.Integer, db.ForeignKey(
+        'pedido.id'), primary_key=True),
+    db.Column('lanche_id', db.Integer, db.ForeignKey(
+        'lanche.id'), primary_key=True)
 )
 
 
@@ -175,8 +196,10 @@ class Lanche(db.Model):
 
 funcPedido = db.Table(
     'funcPedido',
-    db.Column('funcionario_id', db.Integer, db.ForeignKey('funcionario.id'), primary_key=True),
-    db.Column('pedidoNumero', db.Integer, db.ForeignKey('pedido.id'), primary_key=True)
+    db.Column('funcionario_id', db.Integer, db.ForeignKey(
+        'funcionario.id'), primary_key=True),
+    db.Column('pedidoNumero', db.Integer, db.ForeignKey(
+        'pedido.id'), primary_key=True)
 )
 
 
@@ -188,6 +211,7 @@ class Funcionario(db.Model):
     email = db.Column(db.String(50), nullable=False)
     cidade = db.Column(db.String(50), nullable=False)
     bairro = db.Column(db.String(50), nullable=False)
+    rua = db.Column(db.String(50), nullable=False)
     cep = db.Column(db.Integer, nullable=False)
     numero = db.Column(db.Integer, nullable=False)
     inicio_contrato = db.Column(db.Date, nullable=False)
@@ -199,11 +223,12 @@ class Funcionario(db.Model):
     funcPedido = db.relationship('Pedido', secondary=funcPedido, lazy='dynamic',
                                  backref=db.backref('funcionarioPedido', lazy=True))
 
-    def __init__(self, nome, email, cidade, bairro, cep, numero, inicio_contrato, termino_contrato, login_id):
+    def __init__(self, nome, email, cidade, bairro, rua, cep, numero, inicio_contrato, termino_contrato, login_id):
         self.nome = nome
         self.email = email
         self.cidade = cidade
         self.bairro = bairro
+        self.rua = rua
         self.cep = cep
         self.numero = numero
         self.inicio_contrato = inicio_contrato
@@ -219,16 +244,20 @@ class Cliente(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=False)
+    receberEmail = db.Column(db.Boolean)
     login_id = db.Column(db.Integer, db.ForeignKey('login.id'))
 
     login = db.relationship('Login', foreign_keys=login_id)
 
-    def __init__(self, nome, login_id):
+    def __init__(self, nome, email, receberEmail, login_id):
         self.nome = nome
+        self.email = email
+        self.receberEmail = receberEmail
         self.login_id = login_id
 
     def __repr__(self):
-        return '<Cliente %r>' % self.nome
+        return f'<Cliente {self.nome}>'
 
 
 class Endereco(db.Model):
@@ -258,14 +287,18 @@ class Endereco(db.Model):
 
 pedidoPorcao = db.Table(
     'pedidoPorcao',
-    db.Column('pedido_id', db.Integer, db.ForeignKey('pedido.id'), primary_key=True),
-    db.Column('porcao_id', db.Integer, db.ForeignKey('porcao.id'), primary_key=True)
+    db.Column('pedido_id', db.Integer, db.ForeignKey(
+        'pedido.id'), primary_key=True),
+    db.Column('porcao_id', db.Integer, db.ForeignKey(
+        'porcao.id'), primary_key=True)
 )
 
 pedidoBebida = db.Table(
     'pedidoBebida',
-    db.Column('pedido_id', db.Integer, db.ForeignKey('pedido.id'), primary_key=True),
-    db.Column('bebida_id', db.Integer, db.ForeignKey('bebida.id'), primary_key=True)
+    db.Column('pedido_id', db.Integer, db.ForeignKey(
+        'pedido.id'), primary_key=True),
+    db.Column('bebida_id', db.Integer, db.ForeignKey(
+        'bebida.id'), primary_key=True)
 )
 
 
@@ -360,8 +393,9 @@ class Porcao(db.Model):
 class TelefoneFuncionario(db.Model):
     __tablename__ = 'telefoneFuncionario'
 
-    numero = db.Column(db.Integer, nullable=False)
-    funcionario_id = db.Column(db.Integer, db.ForeignKey('funcionario.id'), primary_key=True)
+    numero = db.Column(db.String(11), nullable=False)
+    funcionario_id = db.Column(db.Integer, db.ForeignKey(
+        'funcionario.id'), primary_key=True)
 
     funcionario = db.relationship('Funcionario', foreign_keys=funcionario_id)
 
@@ -376,8 +410,9 @@ class TelefoneFuncionario(db.Model):
 class TelefoneCliente(db.Model):
     __tablename__ = 'telefoneCliente'
 
-    numero = db.Column(db.Integer, nullable=False)
-    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), primary_key=True)
+    numero = db.Column(db.String(11), nullable=False)
+    cliente_id = db.Column(db.Integer, db.ForeignKey(
+        'cliente.id'), primary_key=True)
 
     cliente = db.relationship('Cliente', foreign_keys=cliente_id)
 

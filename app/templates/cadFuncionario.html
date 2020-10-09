@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Cad. Funcionário{% endblock%}
+
+{%block content%}
+<div class="container-sm">
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h1 class="display-4 text-primary"><i class="fas fa-users"></i>Cadastro de Funcionário</h1>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center mb-5">
+    <div class="col-sm-12 col-md-10 col-lg-8">
+        <form action="{{url_for('cadFuncionario')}}" method="POST">
+            {{form.csrf_token}}
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    {{form.nome.label}}
+                    {{form.nome(class="form-control", placeholder='Nome..')}}
+                </div>
+                <div class="form-group col-sm-6">
+                    {{form.inicio_contrato.label}}
+                    {{form.inicio_contrato(class="form-control")}}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    {{ form.cidade.label }}
+                    {{ form.cidade(class="form-control", placeholder="Cidade ..") }}
+                </div>
+                <div class="form-group col-sm-3">
+                    {{ form.cep.label}}
+                    {{ form.cep(class="form-control", placeholder="CEP ..")}}
+                </div>
+                <div class="form-group col-sm-3">
+                    {{ form.numero.label }}
+                    {{ form.numero(class="form-control", placeholder="Número ..") }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    {{form.bairro.label}}
+                    {{form.bairro(class="form-control", placeholder="Bairro ..")}}
+                </div>
+                <div class="form-group col-sm-6">
+                    {{form.rua.label}}
+                    {{form.rua(class="form-control", placeholder="Rua ..")}}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    {{form.email.label}}
+                    {{form.email(class="form-control", placeholder="E-mail ..")}}
+                </div>
+                <div class="form-group col-sm-3">
+                    {{form.telefone.label}}
+                    {{form.telefone(class="form-control", placeholder="Telefone ..")}}
+                </div>
+                <div class="form-group col-sm-3">
+                    {{ form.login.label}}
+                    {{form.login(class="form-control", placeholder="Login ..")}}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    {{form.password.label}}
+                    {{form.password(class="form-control", placeholder="Senha ..")}}
+                    <!-- {{error}} -->
+                    {% if error == 'senha' %}
+                    <div div class="alert alert-danger" role="alert">
+                        Senhas não são Iguais
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="form-group col-sm-6">
+                    {{form.confirmPassword.label}}
+                    {{form.confirmPassword(class="form-control", placeholder="Confirme a senha ..")}}
+                    {% if error == 'senha' %}
+                    <div div class="alert alert-danger" role="alert">
+                        Senhas não são Iguais
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            {{form.is_admin(class="form-check-input")}} Usuário Admistrador
+                        </label>
+                        <label class="form-check-label ml-5">
+                            {{form.is_ativo(class="form-check-input")}} Cadastro Ativo
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}
