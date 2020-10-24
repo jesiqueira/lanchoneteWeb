@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Frios{% endblock%}
+
+{%block content%}
+<div class="container-sm">
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h1 class="display-4 text-primary"><i class="fas fa-list-ol"></i> Lista de Frios</h1>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center mb-5">
+    <div class="col-sm-12 col-md-10 col-lg-8">
+        <form action="{{url_for('consultafrios')}}" method="post">
+            {{form.csrf_token}}
+            <div class="form-row">
+                <div class="form-group col-sm-4">
+                    {{form.consulta(class='form-control', placeholder='Digite aqui sua consulta')}}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form.campo(class='form-control')}}
+                </div>
+                <div class="form-group col-sm-4">
+                    <button type="submit" class="btn btn-success ml-3">Consultar</button>
+                </div>
+            </div>
+        </form>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-hover table-striped mb-0 text-center">
+                <thead>
+                    <tr>
+                        <th scope="col"><a href="/ordenarfrios/id/{{ordem}}">ID</a></th>
+                        <th scope="col"><a href="/ordenarfrios/nome/{{ordem}}">NOME</a></th>
+                        <th scope="col"><a href="/ordenarfrios/quantidade/{{ordem}}">QUANTIDADE</a></th>
+                        <th scope="col"><a href="/ordenarfrios/preco/{{ordem}}">PREÇO</a></th>
+                        <th scope="col" class="text-primary">AÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for frio in frios%}
+                    <tr>
+                        <td><a href="/selecionarfrios/{{frio.id}}">{{frio.id}}</a></td>
+                        <td>{{frio.nome}}</td>
+                        <td>{{frio.quantidade}}</td>
+                        <td>{{frio.preco}}</td>
+                        <td class="text-nowrap">
+                            <a href="/editarfrios/{{frio.id}}" class="btn btn-primary" role="button"><i class="fas fa-edit"></i> Editar</a>
+                            <a href="/deletar_frios/{{frio.id}}" class="btn btn-danger" role="button"><i class="fas fa-trash-alt"></i> Excluir</a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        <a href="#" style="float: right;" onclick="relatorio()">Imprimir Relatório</a>
+        <textarea id="dados" style="display: none;">
+            {%for frio in frios%}
+                {{frio.id}}|{{frio.nome}}|{{frio.quantidade}}|{{frio.preco}}#
+            {%endfor%}
+        </textarea>
+        
+    </div>
+</div>
+{%endblock%}

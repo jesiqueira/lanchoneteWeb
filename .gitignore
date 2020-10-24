@@ -7,3 +7,5 @@ venv
 img
 node_modules
 config.py
+development.py
+production.py

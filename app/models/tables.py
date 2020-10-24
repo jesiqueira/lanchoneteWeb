@@ -32,7 +32,8 @@ class Login(db.Model):
         self.is_ativo = is_ativo
 
     def __repr__(self):
-        return '<Admin %r>' % self.login
+        # return '<Login %r>' % self.login
+        return f'Login {self.login}'
 
 
 friosLanche = db.Table(

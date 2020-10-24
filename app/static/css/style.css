@@ -1,7 +1,19 @@
 .navbar .navbar-nav .dropdown-menu .dropdown-item {
-  color: white; }
+  color: white;
+}
 
 .navbar .navbar-nav .dropdown-menu .dropdown-item:hover {
-  color: steelblue; }
+  color: steelblue;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 400px;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+}
 
 /*# sourceMappingURL=style.css.map */
